@@ -2,8 +2,8 @@
 /*
 
 #do not exclude:
-!/LightTheWay/Assets*
-!/LightTheWay/ProjectSettings*
+!/Assets
+!/ProjectSettings
 
 #continue to exclude
 /LightTheWay/Assets/AssetStoreTools*
