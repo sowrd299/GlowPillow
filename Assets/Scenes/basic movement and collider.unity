@@ -8,25 +8,25 @@ SceneSettings:
   m_PVSPortalsArray: []
   m_OcclusionBakeSettings:
     smallestOccluder: 5
-    smallestHole: .25
+    smallestHole: 0.25
     backfaceThreshold: 100
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 6
   m_Fog: 0
-  m_FogColor: {r: .5, g: .5, b: .5, a: 1}
+  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
-  m_FogDensity: .00999999978
+  m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: .211999997, g: .226999998, b: .259000003, a: 1}
-  m_AmbientEquatorColor: {r: .114, g: .125, b: .133000001, a: 1}
-  m_AmbientGroundColor: {r: .0469999984, g: .0430000015, b: .0350000001, a: 1}
+  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
+  m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 3
   m_SkyboxMaterial: {fileID: 0}
-  m_HaloStrength: .5
+  m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 0}
@@ -40,7 +40,7 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 5
+  serializedVersion: 6
   m_GIWorkflowMode: 1
   m_LightmapsMode: 1
   m_GISettings:
@@ -66,7 +66,7 @@ LightmapSettings:
     m_FinalGather: 0
     m_FinalGatherRayCount: 1024
     m_ReflectionCompression: 2
-  m_LightmapSnapshot: {fileID: 0}
+  m_LightingDataAsset: {fileID: 0}
   m_RuntimeCPUUsage: 25
 --- !u!196 &4
 NavMeshSettings:
@@ -74,15 +74,15 @@ NavMeshSettings:
   m_ObjectHideFlags: 0
   m_BuildSettings:
     serializedVersion: 2
-    agentRadius: .5
+    agentRadius: 0.5
     agentHeight: 2
     agentSlope: 45
-    agentClimb: .400000006
+    agentClimb: 0.4
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     accuratePlacement: 0
     minRegionArea: 2
-    cellSize: .166666672
+    cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
 --- !u!1001 &84734946
@@ -150,16 +150,17 @@ EdgeCollider2D:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 199087688}
   m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   m_Points:
-  - {x: -.254776001, y: .299717814}
-  - {x: -.245223522, y: .572188854}
-  - {x: 1.05169415, y: .555118382}
-  - {x: 1.04267061, y: .340248019}
-  - {x: -.249295235, y: .326964885}
+  - {x: -0.254776, y: 0.2997178}
+  - {x: -0.24522352, y: 0.57218885}
+  - {x: 1.0516942, y: 0.5551184}
+  - {x: 1.0426706, y: 0.34024802}
+  - {x: -0.24929523, y: 0.32696488}
 --- !u!4 &199087690
 Transform:
   m_ObjectHideFlags: 0
@@ -167,7 +168,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 199087688}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.87026763, y: -.737942159, z: 1}
+  m_LocalPosition: {x: -2.8702676, y: -0.73794216, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -237,58 +238,59 @@ EdgeCollider2D:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1289447704}
   m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   m_Points:
-  - {x: 2.41263604, y: -1.62612796}
-  - {x: 2.41778278, y: -2.9062283}
-  - {x: 2.28715014, y: -3.13928652}
-  - {x: 2.34512711, y: -3.80844069}
-  - {x: 3.59605789, y: -3.79454708}
-  - {x: 3.54542732, y: -2.3611896}
-  - {x: 5.056252, y: -2.40745735}
-  - {x: 5.04189396, y: -1.85976815}
-  - {x: 4.15570831, y: -1.84048617}
-  - {x: 4.13034725, y: -1.38012481}
-  - {x: 5.04721928, y: -1.37820649}
-  - {x: 5.03257608, y: -.723775387}
-  - {x: -.0565474071, y: -.734951735}
-  - {x: -.0109739304, y: -1.53453767}
-  - {x: -.383346349, y: -1.54026031}
-  - {x: -.403666079, y: -.38404122}
-  - {x: -.157050729, y: -.415364087}
-  - {x: 1.20018172, y: -.420842886}
-  - {x: 1.18473458, y: .0133904517}
-  - {x: -.182103157, y: .0269770324}
-  - {x: -.17287308, y: 2.39615655}
-  - {x: -1.91601384, y: 2.39925838}
-  - {x: -1.9592123, y: 3.27071214}
-  - {x: -2.86573768, y: 3.27506733}
-  - {x: -2.88852835, y: 2.72012711}
-  - {x: -3.88860488, y: 2.71317983}
-  - {x: -3.95931649, y: 1.41363728}
-  - {x: -4.91882706, y: 1.41048193}
-  - {x: -4.92318058, y: .495111704}
-  - {x: -4.1144557, y: .488696575}
-  - {x: -4.10033894, y: -1.33231485}
-  - {x: -4.9178009, y: -1.3300277}
-  - {x: -4.89536667, y: -3.2372067}
-  - {x: -3.76441526, y: -3.24879336}
-  - {x: -3.75882745, y: -3.78479981}
-  - {x: -.363277793, y: -3.79708958}
-  - {x: -.379755139, y: -3.0065589}
-  - {x: -.0194102526, y: -3.0058012}
-  - {x: -.0437295437, y: -3.74104404}
-  - {x: .360827506, y: -3.34841824}
-  - {x: .777108967, y: -3.20584178}
-  - {x: 1.2603054, y: -3.37594557}
-  - {x: 1.61676967, y: -3.75923061}
-  - {x: 1.59295142, y: -3.10010386}
-  - {x: 2.1598506, y: -3.09279013}
-  - {x: 2.15448427, y: -1.61805737}
-  - {x: 2.35279799, y: -1.62022758}
+  - {x: 2.412636, y: -1.626128}
+  - {x: 2.4177828, y: -2.9062283}
+  - {x: 2.2871501, y: -3.1392865}
+  - {x: 2.345127, y: -3.8084407}
+  - {x: 3.596058, y: -3.794547}
+  - {x: 3.5454273, y: -2.3611896}
+  - {x: 5.056252, y: -2.4074574}
+  - {x: 5.041894, y: -1.8597682}
+  - {x: 4.1557083, y: -1.8404862}
+  - {x: 4.1303473, y: -1.3801248}
+  - {x: 5.0472193, y: -1.3782065}
+  - {x: 5.032576, y: -0.7237754}
+  - {x: -0.056547407, y: -0.73495173}
+  - {x: -0.01097393, y: -1.5345377}
+  - {x: -0.38334635, y: -1.5402603}
+  - {x: -0.40366608, y: -0.38404122}
+  - {x: -0.15705073, y: -0.4153641}
+  - {x: 1.2001817, y: -0.4208429}
+  - {x: 1.1847346, y: 0.013390452}
+  - {x: -0.18210316, y: 0.026977032}
+  - {x: -0.17287308, y: 2.3961565}
+  - {x: -1.9160138, y: 2.3992584}
+  - {x: -1.9592123, y: 3.2707121}
+  - {x: -2.8657377, y: 3.2750673}
+  - {x: -2.8885283, y: 2.720127}
+  - {x: -3.8886049, y: 2.7131798}
+  - {x: -3.9593165, y: 1.4136373}
+  - {x: -4.918827, y: 1.4104819}
+  - {x: -4.9231806, y: 0.4951117}
+  - {x: -4.1144557, y: 0.48869658}
+  - {x: -4.100339, y: -1.3323148}
+  - {x: -4.917801, y: -1.3300277}
+  - {x: -4.8953667, y: -3.2372067}
+  - {x: -3.7644153, y: -3.2487934}
+  - {x: -3.7588274, y: -3.7847998}
+  - {x: -0.3632778, y: -3.7970896}
+  - {x: -0.37975514, y: -3.006559}
+  - {x: -0.019410253, y: -3.0058012}
+  - {x: -0.043729544, y: -3.741044}
+  - {x: 0.3608275, y: -3.3484182}
+  - {x: 0.77710897, y: -3.2058418}
+  - {x: 1.2603054, y: -3.3759456}
+  - {x: 1.6167697, y: -3.7592306}
+  - {x: 1.5929514, y: -3.1001039}
+  - {x: 2.1598506, y: -3.0927901}
+  - {x: 2.1544843, y: -1.6180574}
+  - {x: 2.352798, y: -1.6202276}
 --- !u!4 &1289447706
 Transform:
   m_ObjectHideFlags: 0
@@ -385,14 +387,18 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b65325abcc37d419ea1980c693234d56, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
 --- !u!4 &1830893643
 Transform:
   m_ObjectHideFlags: 0
@@ -400,7 +406,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1830893641}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: .100000001}
+  m_LocalPosition: {x: 0, y: 0, z: 0.1}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -445,8 +451,10 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -477,7 +485,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2046790774}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -3.2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
