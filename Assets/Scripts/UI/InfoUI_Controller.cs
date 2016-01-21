@@ -35,7 +35,7 @@ public class InfoUI_Controller : MonoBehaviour {
 
 	private bool getBlankyOn(){
 		//SHOULD RETURN TRUE IF THE PLAYER IS WEARING THE BLANKY
-		return true;
+		return false;
 	}
 
 	private bool getIsSprinting(){
@@ -45,12 +45,12 @@ public class InfoUI_Controller : MonoBehaviour {
 
 	private bool getIsCooldown(){
 		//SHOULD RETURN TRUE IF SPRINT IS ON COOLDOWN
-		return true;
+		return false;
 	}
 
 	private bool getProjectileThrown(){
 		//SHOULD RETURN TRUE WHILE THE PROJECTILE IS OUT
-		return true;
+		return false;
 	}
 
 	public void setReminderVisibility(bool arg){
