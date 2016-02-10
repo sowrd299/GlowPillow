@@ -15,6 +15,8 @@ public class PlayerAbility : MonoBehaviour {
 	public PlayerStats _playerstats;
 	public Vector2 direction;
 	public PlayerManager _playermanager;
+	public GameObject weaponLight;
+	public GameObject basicLight;
 	private Vector2 SpawnPos;
 	public float speed;
 	public float starThreshold = 0.5f;
@@ -25,7 +27,6 @@ public class PlayerAbility : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Enemies = 1 << 11;
-
 	}
 	
 	// Update is called once per frame
@@ -86,13 +87,23 @@ public class PlayerAbility : MonoBehaviour {
 
 
 	public void PlayerRangeAttack(){
-		if(!getProjectileThrown()){Instantiate (star, SpawnPos, Quaternion.identity);}
-
+		//assumes only throwing one star
+		if(!getProjectileThrown()){
+			Instantiate (star, SpawnPos, Quaternion.identity);
+			weaponLight.transform.parent = GameObject.FindGameObjectWithTag("Star").transform; //give the light to the star
+			toggleBasicLight();
+			weaponLight.transform.localPosition = new Vector2(0,0);
+		}
 	}
 
 	public bool getProjectileThrown(){
 		//returns true if the star has already been thrown (and has not been picked up)
 		return GameObject.FindGameObjectWithTag ("Star") != null;
+	}
+
+	public void toggleBasicLight(){
+		//assumes begins false
+		basicLight.SetActive (!basicLight.activeInHierarchy);
 	}
 
 }

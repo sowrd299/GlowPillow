@@ -18,7 +18,7 @@ public class FogHider : MonoBehaviour {
 	void Update(){
 		bool b = false;
 		foreach (GameObject o in GameObject.FindGameObjectsWithTag(lightTag)) {
-			Debug.Log(Vector2.Distance (transform.position, o.transform.position));
+			//Debug.Log(Vector2.Distance (transform.position, o.transform.position));
 			if (Vector2.Distance (transform.position, o.transform.position) <= o.GetComponent<FogLight>().getRadius()) {
 				b = true;
 				break;

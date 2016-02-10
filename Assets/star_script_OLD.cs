@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class star_script1 : MonoBehaviour {
+public class star_script_OLD : MonoBehaviour {
     private float speed = 2.0f;
     private Vector3 Player;
     private Vector2 PlayerDirection;
@@ -27,7 +27,7 @@ public class star_script1 : MonoBehaviour {
         GameObject thePlayer = GameObject.Find("Player");
         PlayerRangedAttack playerRange = thePlayer.GetComponent<PlayerRangedAttack>();
         direct = playerRange.direction;
-        
+		Debug.Log (direct);
     }
 
 

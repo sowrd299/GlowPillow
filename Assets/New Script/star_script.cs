@@ -27,9 +27,9 @@ public class star_script : MonoBehaviour {
         GameObject thePlayer = GameObject.Find("Player");
         //PlayerRangedAttack playerRange = thePlayer.GetComponent<PlayerRangedAttack>();
 		PlayerAbility ability = thePlayer.GetComponent<PlayerAbility>();
-
 		direct = ability.direction;
-        
+		GetComponent<Rigidbody2D>().velocity = direct.normalized * 4.0f;
+		Debug.Log (direct);
     }
 
 
@@ -72,7 +72,12 @@ public class star_script : MonoBehaviour {
             //GetComponent<Rigidbody2D>().AddForce(PlayerDirection.normalized * Time.deltaTime);
         }
 
-        if (other.transform.tag == "Player") {
+		if (other.transform.tag == "Player") {
+			Transform lght = GetComponentInChildren<FogLight> ().transform;
+			GameObject plyr = GameObject.Find ("Player");
+				lght.parent = plyr.transform; //give the light back to the plyer;
+			lght.localPosition = new Vector2(0,0);
+			plyr.GetComponent<PlayerAbility>().toggleBasicLight();
             Destroy(this.gameObject);
         }
     }
