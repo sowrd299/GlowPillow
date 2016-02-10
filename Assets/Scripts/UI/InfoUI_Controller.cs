@@ -16,6 +16,9 @@ public class InfoUI_Controller : MonoBehaviour {
 	public Image meleeImage;
 	public Image rangedImage;
 
+	//all the shit that the infor comes from
+	public GameObject blanky;
+	public PlayerAbility pAbil;
 	public KeyCode meleeKey;
 
 	public Image reminderImage;
@@ -26,16 +29,16 @@ public class InfoUI_Controller : MonoBehaviour {
 
 	void Update(){
 
-		conditDispImage (ref blankyImage,getBlankyOn(),false);
-		conditDispImage (ref sprintImage, getIsSprinting (), getIsCooldown ());
-		conditDispImage (ref meleeImage, Input.GetKey (meleeKey), getProjectileThrown());
-		conditDispImage (ref rangedImage, getProjectileThrown (), false);
+		conditDispImage (ref blankyImage, getBlankyOn(),false);
+		conditDispImage (ref sprintImage, getIsSprinting (), getBlankyOn() || getIsCooldown ());
+		conditDispImage (ref meleeImage, Input.GetKey (meleeKey), getBlankyOn() || getProjectileThrown());
+		conditDispImage (ref rangedImage, getProjectileThrown (), getBlankyOn());
 
 	}
 
 	private bool getBlankyOn(){
 		//SHOULD RETURN TRUE IF THE PLAYER IS WEARING THE BLANKY
-		return false;
+		return blanky.activeInHierarchy;
 	}
 
 	private bool getIsSprinting(){
@@ -50,7 +53,7 @@ public class InfoUI_Controller : MonoBehaviour {
 
 	private bool getProjectileThrown(){
 		//SHOULD RETURN TRUE WHILE THE PROJECTILE IS OUT
-		return false;
+		return pAbil.getProjectileThrown();
 	}
 
 	public void setReminderVisibility(bool arg){

@@ -19,8 +19,9 @@ public class FogLight : MonoBehaviour {
 
 	public void setRadius(float radius){
 		this.radius = radius;
-		//assumes scale of all parent objects 1. Should make it so it doesn't if have time.
-		sprite.transform.localScale = new Vector3 (radius * 2, radius * 2, radius * 2);
+		//assumes scale of all parent objects 0.1. Should make it so it doesn't if have time.
+		//SIDE RANT: IS THE PLAYER SCALE 0.1? THE SCALES IN THIS ARE NUTS! JUST MAKE EVERYTHING SCALE = 1!
+		sprite.transform.localScale = new Vector3 (radius * 20, radius * 20, radius * 20);
 	}
 
 }

@@ -8,6 +8,7 @@ TagManager:
   - Wall
   - Player
   - FogLight
+  - Star
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Background Image
   - Wall
   - DPlayer
-  - 
+  - Enemies
   - 
   - 
   - 
@@ -42,8 +43,8 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Ground
-    uniqueID: 3999855781
+  - name: Background
+    uniqueID: 2008998735
     locked: 0
   - name: Default
     uniqueID: 0
