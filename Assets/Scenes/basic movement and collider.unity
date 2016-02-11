@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.66176474, g: 0, b: 0, a: 0.391}
+  m_Color: {r: 0.50735295, g: 0, b: 0, a: 0.391}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1407,7 +1407,7 @@ Prefab:
       objectReference: {fileID: 785325062}
     - target: {fileID: 11447102, guid: 8e5c16af274ae413c94f511ea5b785b0, type: 2}
       propertyPath: curHealth
-      value: 50
+      value: 75
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11421850, guid: 8e5c16af274ae413c94f511ea5b785b0, type: 2}
