@@ -60,29 +60,31 @@ public class PlayerAbility : MonoBehaviour {
 
 
 	public void PlayerAttack(){
-		player_position = GameObject.Find("Player").transform.position; 
+	if(GameObject.FindGameObjectWithTag("Star") == null){
+			//makes it so can swing mace while star is out
+			player_position = GameObject.Find("Player").transform.position; 
 
 
-		Collider2D[] hitColliders = Physics2D.OverlapCircleAll(player_position, radius, Enemies);
-		int i = 0;
-		for(i = 0; i < hitColliders.Length; i++){
-			distance = Vector2.Distance(hitColliders[i].transform.position, transform.position);
-			if (distance <= _playerstats.range){
-			{	
-				
-				hitColliders[i].SendMessage("Enemy Hit", _playerstats.dmg, SendMessageOptions.DontRequireReceiver); 
-				Debug.Log("Damage Sent");
-		
+			Collider2D[] hitColliders = Physics2D.OverlapCircleAll(player_position, radius, Enemies);
+			int i = 0;
+			for(i = 0; i < hitColliders.Length; i++){
+				distance = Vector2.Distance(hitColliders[i].transform.position, transform.position);
+				if (distance <= _playerstats.range){
+				{	
+					
+					hitColliders[i].SendMessage("Enemy Hit", _playerstats.dmg, SendMessageOptions.DontRequireReceiver); 
+					Debug.Log("Damage Sent");
+			
 
-					float verticalpush = hitColliders[i].gameObject.transform.position.y - transform.position.y;
-					float horizontalpush = hitColliders[i].gameObject.transform.position.x - transform.position.x;
+						float verticalpush = hitColliders[i].gameObject.transform.position.y - transform.position.y;
+						float horizontalpush = hitColliders[i].gameObject.transform.position.x - transform.position.x;
 
-				//Check the target rigidbody and knock it back
-					hitColliders[i].GetComponent<Rigidbody2D>().AddForce(new Vector2(horizontalpush * 1000, verticalpush * 1000));
+					//Check the target rigidbody and knock it back
+						hitColliders[i].GetComponent<Rigidbody2D>().AddForce(new Vector2(horizontalpush * 1000, verticalpush * 1000));
+					}
 				}
 			}
 		}
-
 	}
 
 
@@ -103,6 +105,7 @@ public class PlayerAbility : MonoBehaviour {
 
 	public void toggleBasicLight(){
 		//assumes begins false
+		Debug.Log("Toggling");
 		basicLight.SetActive (!basicLight.activeInHierarchy);
 	}
 

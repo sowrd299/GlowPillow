@@ -18,6 +18,7 @@ public class InfoUI_Controller : MonoBehaviour {
 
 	//all the shit that the infor comes from
 	public GameObject blanky;
+	public PlayerManager pm;
 	public PlayerAbility pAbil;
 	public KeyCode meleeKey;
 
@@ -43,12 +44,12 @@ public class InfoUI_Controller : MonoBehaviour {
 
 	private bool getIsSprinting(){
 		//SHOULD RETURN TRUE IF THE PLAYER IS SPRINTING
-		return false;
+		return pm.getSprintState() == PlayerManager.SprintStates.SPRNT;
 	}
 
 	private bool getIsCooldown(){
 		//SHOULD RETURN TRUE IF SPRINT IS ON COOLDOWN
-		return false;
+		return pm.getSprintState() == PlayerManager.SprintStates.CD;
 	}
 
 	private bool getProjectileThrown(){

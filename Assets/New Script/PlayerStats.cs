@@ -2,8 +2,8 @@
 using System.Collections;
 
 public class PlayerStats : MonoBehaviour {
-	public float maxHealth = 100;
-	public float curHealth = 100;
+	public float maxHealth = 100.0f;
+	public float curHealth = 100.0f;
 	public float Speed = 2;
 	public float Level;
 	public float dmg = 5;
@@ -28,5 +28,14 @@ public class PlayerStats : MonoBehaviour {
 			curHealth = maxHealth;
 		if(maxHealth < 1)
 			maxHealth = 1;
+	}
+
+	public float getCurHealth(){
+		//Debug.Log("Returning "+curHealth.ToString());
+		return curHealth;
+	}
+
+	public float getMaxHealth(){
+		return maxHealth;
 	}
 }

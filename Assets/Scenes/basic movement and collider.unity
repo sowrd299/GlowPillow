@@ -130,7 +130,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!1 &250383211
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,7 +250,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &315496697
 RectTransform:
   m_ObjectHideFlags: 0
@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 0.5019608}
+  m_Color: {r: 0.66176474, g: 0, b: 0, a: 0.391}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -310,6 +310,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 581959239}
   - 114: {fileID: 581959238}
+  - 114: {fileID: 581959240}
   m_Layer: 0
   m_Name: UI_Controller
   m_TagString: Untagged
@@ -333,6 +334,7 @@ MonoBehaviour:
   meleeImage: {fileID: 829847397}
   rangedImage: {fileID: 250383213}
   blanky: {fileID: 1187916973}
+  pm: {fileID: 1556395037}
   pAbil: {fileID: 1556395036}
   meleeKey: 101
   reminderImage: {fileID: 0}
@@ -348,6 +350,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
+--- !u!114 &581959240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 581959237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11603ace55f0f1548b8adb7ca2f1f6c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 315496698}
+  pStats: {fileID: 1556395039}
+  pm: {fileID: 1556395037}
 --- !u!4 &660403003 stripped
 Transform:
   m_PrefabParentObject: {fileID: 469862, guid: 8e5c16af274ae413c94f511ea5b785b0, type: 2}
@@ -527,6 +543,14 @@ Prefab:
     - target: {fileID: 11400242, guid: a861804797d54fe449b58d7f651319bd, type: 2}
       propertyPath: radius
       value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 21245508, guid: a861804797d54fe449b58d7f651319bd, type: 2}
+      propertyPath: m_SortingLayerID
+      value: 2008998735
+      objectReference: {fileID: 0}
+    - target: {fileID: 21245508, guid: a861804797d54fe449b58d7f651319bd, type: 2}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a861804797d54fe449b58d7f651319bd, type: 2}
@@ -782,7 +806,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!1 &1378422055
 GameObject:
   m_ObjectHideFlags: 0
@@ -922,6 +946,10 @@ Prefab:
       propertyPath: m_Name
       value: Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 2016848, guid: a7c2b3b07eaf24af99b642bdf40c1afc, type: 2}
+      propertyPath: field of view
+      value: 47
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a7c2b3b07eaf24af99b642bdf40c1afc, type: 2}
   m_IsPrefabParent: 0
@@ -944,7 +972,8 @@ MonoBehaviour:
   anim: {fileID: 1556395038}
   _playerability: {fileID: 1556395035}
   _playerstats: {fileID: 1556395034}
-  sprint: 2
+  sprint: 1.25
+  sprintCD: 0.9
   useRate: 0.5
 --- !u!114 &1556395034
 MonoBehaviour:
@@ -974,13 +1003,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e41809222a53b44dba49293974e441dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 2054904656}
   star: {fileID: 101306, guid: 58dbbb46f87d99f4ebde5537358e9c72, type: 2}
   _playerstats: {fileID: 1556395034}
   direction: {x: 0, y: 0}
   _playermanager: {fileID: 1556395033}
-  weaponLight: {fileID: 0}
-  basicLight: {fileID: 0}
+  weaponLight: {fileID: 2063112489}
+  basicLight: {fileID: 785325062}
   speed: 5
   starThreshold: 0.5
 --- !u!114 &1556395036 stripped
@@ -989,11 +1018,23 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1853047185}
   m_Script: {fileID: 11500000, guid: e41809222a53b44dba49293974e441dc, type: 3}
+--- !u!114 &1556395037 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11405614, guid: 8e5c16af274ae413c94f511ea5b785b0,
+    type: 2}
+  m_PrefabInternal: {fileID: 1853047185}
+  m_Script: {fileID: 11500000, guid: 371e649b124b74c169d6fe9219b8335b, type: 3}
 --- !u!95 &1556395038 stripped
 Animator:
   m_PrefabParentObject: {fileID: 9574004, guid: 8e5c16af274ae413c94f511ea5b785b0,
     type: 2}
   m_PrefabInternal: {fileID: 1853047185}
+--- !u!114 &1556395039 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11447102, guid: 8e5c16af274ae413c94f511ea5b785b0,
+    type: 2}
+  m_PrefabInternal: {fileID: 1853047185}
+  m_Script: {fileID: 11500000, guid: c480f94be648446c1997d46f1b2e6622, type: 3}
 --- !u!4 &1556395045 stripped
 Transform:
   m_PrefabParentObject: {fileID: 482466, guid: 8e5c16af274ae413c94f511ea5b785b0, type: 2}
@@ -1168,10 +1209,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ee36cc8d00e0848b12ea8386a1a55c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 0
+  Health: 100
   Speed: 4
-  Attack: 0
-  Damage: 0
+  Attack: 1
+  Damage: 15
   DetectionRange: 7
   TranslatingDistance: 7
 --- !u!114 &1846868675
@@ -1364,12 +1405,20 @@ Prefab:
       propertyPath: basicLight
       value: 
       objectReference: {fileID: 785325062}
+    - target: {fileID: 11447102, guid: 8e5c16af274ae413c94f511ea5b785b0, type: 2}
+      propertyPath: curHealth
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11421850, guid: 8e5c16af274ae413c94f511ea5b785b0, type: 2}
     - {fileID: 11400978, guid: 8e5c16af274ae413c94f511ea5b785b0, type: 2}
     - {fileID: 11443006, guid: 8e5c16af274ae413c94f511ea5b785b0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 8e5c16af274ae413c94f511ea5b785b0, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &2054904656 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 167470, guid: 8e5c16af274ae413c94f511ea5b785b0, type: 2}
+  m_PrefabInternal: {fileID: 1853047185}
 --- !u!1 &2061292311
 GameObject:
   m_ObjectHideFlags: 0
