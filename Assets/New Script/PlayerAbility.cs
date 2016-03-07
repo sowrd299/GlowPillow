@@ -2,13 +2,9 @@
 using System.Collections;
 
 public class PlayerAbility : MonoBehaviour {
-	public GameObject target;
 	public GameObject star;
 	private int Enemies;
 	private float enemy_health;
-	//float range = 1.8f;
-	//float meleeDamage = 10.0f;
-	//private float elapse = 0;
 	private Vector2 player_position;
 	private int radius = 3;
 	private float distance;
@@ -23,6 +19,7 @@ public class PlayerAbility : MonoBehaviour {
 	private int i;
 	private float x;
 	private float y;
+	private float Hittime;
 
 	// Use this for initialization
 	void Start () {
@@ -60,31 +57,31 @@ public class PlayerAbility : MonoBehaviour {
 
 
 	public void PlayerAttack(){
-	if(GameObject.FindGameObjectWithTag("Star") == null){
-			//makes it so can swing mace while star is out
-			player_position = GameObject.Find("Player").transform.position; 
+		player_position = GameObject.Find("Player").transform.position; 
 
-
-			Collider2D[] hitColliders = Physics2D.OverlapCircleAll(player_position, radius, Enemies);
-			int i = 0;
-			for(i = 0; i < hitColliders.Length; i++){
-				distance = Vector2.Distance(hitColliders[i].transform.position, transform.position);
-				if (distance <= _playerstats.range){
+		//checks player position: right now...the circle is right on the center of the player
+		//fix: change player_position slightly toward (right, left, top, bot) depend on direction face
+		Collider2D[] hitColliders = Physics2D.OverlapCircleAll(player_position, radius, Enemies);
+		int i = 0;
+		for(i = 0; i < hitColliders.Length; i++){
+			distance = Vector2.Distance(hitColliders[i].transform.position, transform.position);
+			if (distance <= _playerstats.range && Hittime + .5f < Time.time){
 				{	
-					
+					Hittime = Time.time;
 					hitColliders[i].SendMessage("Enemy Hit", _playerstats.dmg, SendMessageOptions.DontRequireReceiver); 
 					Debug.Log("Damage Sent");
-			
+					hitColliders[i].gameObject.GetComponent<MinionsStats>().TakeDamage(_playerstats.dmg);
 
-						float verticalpush = hitColliders[i].gameObject.transform.position.y - transform.position.y;
-						float horizontalpush = hitColliders[i].gameObject.transform.position.x - transform.position.x;
+					float verticalpush = hitColliders[i].gameObject.transform.position.y - transform.position.y;
+					float horizontalpush = hitColliders[i].gameObject.transform.position.x - transform.position.x;
 
 					//Check the target rigidbody and knock it back
-						hitColliders[i].GetComponent<Rigidbody2D>().AddForce(new Vector2(horizontalpush * 1000, verticalpush * 1000));
-					}
+					hitColliders[i].GetComponent<Rigidbody2D>().AddForce(new Vector2(horizontalpush * 700, verticalpush * 700));
+
 				}
 			}
 		}
+
 	}
 
 

@@ -23,8 +23,8 @@ public class PlayerManager : MonoBehaviour {
 	private float sprintTime;
 	private SprintStates sprintState = SprintStates.DFLT;
 
-	private bool on = false;
-	private bool off = true;
+	public bool on = false;
+	public bool off = true;
 	public float useRate = 0.5f;
 	private float nextUse;
 
