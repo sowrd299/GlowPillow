@@ -27,8 +27,8 @@ public class EnemyMovement : MonoBehaviour {
 		/// <summary>
 		/// As of Now...Enemy has random Movement, will chase Player when spoted, will attempt to leave corner
 		/// 
-		/// It does not have fluent movement yet
-		/// It does not have region patrol ability 
+		/// Might not be running from walls.
+		/// It does not have region patrol ability
 		/// It does do dmg to the player
 		/// It does knock back the player
 		/// 
@@ -47,39 +47,14 @@ public class EnemyMovement : MonoBehaviour {
 
 		}
 
-		void Update(){
-
-
-			//use change direction to randomize movement of AI
-
-		}
-
-
-		void RandomDirection(){
-			if (Time.time >= tChange){
-				randomX = Random.Range (-1.5f, 1.5f);
-				randomY = Random.Range (-1.5f, 1.5f);
-				tChange = Time.time + Random.Range (0.5f, 1.5f);
-				direction = new Vector2(randomX, randomY);
-			}
-		}
-
-
 		// Update is called once per frame
-		void FixedUpdate () {
+		private void FixedUpdate () {
+
 			RandomDirection();
 
-			GetComponent<Rigidbody2D>().AddForce(direction.normalized * speed);
-			//if something or at certain time ~ prevent stuck at one position or spot
-			if (Physics2D.Raycast(transform.position, direction ,1.5f, Wall)){
-				if (Time.time >= tChange){
-					RandomDirection ();
-					GetComponent<Rigidbody2D>().AddForce(direction.normalized * speed); 
-					tChange = Time.time + Random.Range(0.5f, 1.5f);
-				}
-			}
+			avoid_wall();
 
-
+			// David: Not sure what this code does, but it belongs in it's own function.
 			distance = Vector2.Distance (Player, transform.position);
 			Player = GameObject.Find ("Player").transform.position;
 			if (stuntime > 0){
@@ -88,24 +63,40 @@ public class EnemyMovement : MonoBehaviour {
 			else{
 				stun = false;
 			}
+			// David: Code I don't know ^^^^
 
+			walk_to_player();
+
+			GetComponent<Rigidbody2D>().AddForce(direction.normalized * speed);
+
+		}
+			
+		 private void RandomDirection(){
+			if (Time.time >= tChange){
+				tChange = Time.time + Random.Range (1.0f, 2.5f);
+				direction = new Vector2(Random.Range (-1.5f, 1.5f), Random.Range (-1.5f, 1.5f));
+			}
+		}
+
+		private void avoid_wall(){
+		//if something or at certain time ~ prevent stuck at one position or spot
+			if (Physics2D.Raycast(transform.position, direction ,.4f, Wall)){
+			// this should take wall coordinates and move in oppossite direction
+			direction = new Vector2(-direction.x, -direction.y);
+			}
+		}
+
+		private void walk_to_player(){
 			if (distance < detectRange && !stun){
-				//calcualte the differences in distance (x,y) to player (x,y) --> move that distance if player spoted
+				// direction points to player if within detectRange
 				Xdif = Player.x - transform.position.x;
 				Ydif = Player.y - transform.position.y;
+				direction = new Vector2(Xdif, Ydif);
+			}
 
-				Playerdirection = new Vector2(Xdif, Ydif);
-
-				if (Physics2D.Raycast(transform.position, Playerdirection, 3, Wall)){
-					detectRange = 0;
-					GetComponent<Rigidbody2D>().AddForce(Playerdirection.normalized * 0);
-				}
-
-				else if (Physics2D.Raycast(transform.position, Playerdirection, 4, DPlayer))
-				{
-					//get the rigidbody and add force directly to it
-					GetComponent<Rigidbody2D>().AddForce(Playerdirection.normalized * speed);
-				}
+			if (distance < .8 && !stun){
+				// Keep a small distance between player.
+				direction = new Vector2(0, 0);
 			}
 		}
 
