@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class PlayerStats : MonoBehaviour {
-	public float maxHealth = 50f;
+
+    //public Exp exp;
+
+    //readonly public float[] maxHealth = new float[10] { 50f };
+    public float maxHealth = 50f;
 	public float curHealth;
 	public float Speed = 3f;
-	public float Level = 0f;
+    public int Level = 0;
 	public float dmg = 10f;
 	public float range = 1f;
 	//private bool damaged = false;
@@ -19,7 +22,7 @@ public class PlayerStats : MonoBehaviour {
 	{
 
 		playermanager = GetComponent<PlayerManager>();
-		curHealth = maxHealth;
+		curHealth = maxHealth[Level];
 
 	}
 
@@ -29,15 +32,12 @@ public class PlayerStats : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-		if(playermanager.on == true)
-		{
-			blankie_on = true;
-		}
-		else
-		{
-			blankie_on = false;
-		}
+
+        /*
+        manage the blanky
+        */
+
+        blankie_on = playermanager.on; //
 
 		AdjustCurrentHealth(0);
 	}

@@ -8,14 +8,24 @@ public class EnemyMovement : MonoBehaviour {
 		private float Xdif;
 		private float Ydif;
 		private float speed;
-		private float detectRange;
-		private float AggroRange;
 		private int Wall;
 		private int DPlayer;
 		private float distance;
 		private bool stun;
 		private float stuntime; 
 
+		private float detectRange {
+        get {
+            return enemystats.DetectionRange;
+            }
+        }
+		private float AggroRange {
+        get {
+            return enemystats.DeAggroRange;
+            }
+        }
+
+        
 
 		public bool aggro = false;
 
@@ -40,15 +50,14 @@ public class EnemyMovement : MonoBehaviour {
 		/// </summary>
 
 		void Start(){
-			AggroRange = 5;
 			stuntime = 0;
 			stun = false;
 			Wall = 1 << 9;
 			DPlayer = 1 << 10;
 			enemystats = enemy.GetComponent<MinionsStats>();
 			speed = enemystats.Speed;
-			detectRange = enemystats.DetectionRange; 
-
+			//detectRange = enemystats.DetectionRange; 
+        
 		}
 
 		// Update is called once per frame
