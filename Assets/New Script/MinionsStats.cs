@@ -11,6 +11,7 @@ public class MinionsStats : MonoBehaviour {
 	public float curHealth = 100;
 	public float Speed = 7;
 	public float DetectionRange = 4;
+	public float DeAggroRange = 5;
 	public float TranslatingDistance;
 	public ArrayList Abilities; // <-- for dodges or run over water etc
 	private bool damaged = false;

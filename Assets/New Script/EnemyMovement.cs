@@ -9,12 +9,15 @@ public class EnemyMovement : MonoBehaviour {
 		private float Ydif;
 		private float speed;
 		private float detectRange;
+		private float AggroRange;
 		private int Wall;
 		private int DPlayer;
 		private float distance;
 		private bool stun;
 		private float stuntime; 
 
+
+		public bool aggro = false;
 
 		//for Change Direction
 		public float movementSpeed;
@@ -37,6 +40,7 @@ public class EnemyMovement : MonoBehaviour {
 		/// </summary>
 
 		void Start(){
+			AggroRange = 5;
 			stuntime = 0;
 			stun = false;
 			Wall = 1 << 9;
@@ -49,14 +53,17 @@ public class EnemyMovement : MonoBehaviour {
 
 		// Update is called once per frame
 		private void FixedUpdate () {
+		
+			distance = Vector2.Distance (Player, transform.position);
+			Player = GameObject.Find ("Player").transform.position;
+
+			player_around();
 
 			RandomDirection();
 
 			avoid_wall();
 
 			// David: Not sure what this code does, but it belongs in it's own function.
-			distance = Vector2.Distance (Player, transform.position);
-			Player = GameObject.Find ("Player").transform.position;
 			if (stuntime > 0){
 				stuntime -= Time.deltaTime;
 			}
@@ -86,8 +93,19 @@ public class EnemyMovement : MonoBehaviour {
 			}
 		}
 
+		private void player_around(){
+			if (distance <= detectRange){
+				aggro = true;
+			}
+			else {
+				if (distance > AggroRange){
+					aggro = false;
+					}
+				}
+		}
+
 		private void walk_to_player(){
-			if (distance < detectRange && !stun){
+		if ((distance < detectRange && !stun) || ((distance < AggroRange) & aggro)){
 				// direction points to player if within detectRange
 				Xdif = Player.x - transform.position.x;
 				Ydif = Player.y - transform.position.y;
