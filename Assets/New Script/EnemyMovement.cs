@@ -25,7 +25,16 @@ public class EnemyMovement : MonoBehaviour {
             }
         }
 
-        
+
+
+		// Used for monster attacking.
+		public float timeBetweenAttacks = 5f;
+		public int attackDamage = 10;
+
+		private float TimeSinceAttack = 0f;
+		private float AttackStartRange = 1.f;
+
+		private bool Attacking = false;
 
 		public bool aggro = false;
 
@@ -83,9 +92,38 @@ public class EnemyMovement : MonoBehaviour {
 
 			walk_to_player();
 
+			CheckAttack();
+			if (Attacking) {
+				RushToPlayer();
+				}
+
 			GetComponent<Rigidbody2D>().AddForce(direction.normalized * speed);
 
 		}
+
+		private void CheckAttack() {
+		if (distance < AttackStartRange && TimeSinceAttack > timeBetweenAttacks) {
+			Attacking = true;
+			}
+		else {
+			Attacking = false;
+			TimeSinceAttack += TimeSinceAttack.deltaTime;
+			}
+			
+		}
+
+	private void RushToPlayer() {
+		Xdif = Player.x - (3 * transform.position.x);
+		Ydif = Player.y - (3 * transform.position.y);
+		direction = new Vector2(Xdif, Ydif);
+		}
+
+	void OnCollisionEnter() {
+		Attacking = false;
+		TimeSinceAttack = 0;
+		playerStats.TakeDamage(attackDamage);
+	}
+
 			
 		 private void RandomDirection(){
 			if (Time.time >= tChange){
@@ -93,6 +131,7 @@ public class EnemyMovement : MonoBehaviour {
 				direction = new Vector2(Random.Range (-1.5f, 1.5f), Random.Range (-1.5f, 1.5f));
 			}
 		}
+
 
 		private void avoid_wall(){
 		//if something or at certain time ~ prevent stuck at one position or spot
@@ -114,7 +153,7 @@ public class EnemyMovement : MonoBehaviour {
 		}
 
 		private void walk_to_player(){
-		if ((distance < detectRange && !stun) || ((distance < AggroRange) & aggro)){
+		if ((distance < detectRange && !stun) || ((distance < AggroRange) && aggro)){
 				// direction points to player if within detectRange
 				Xdif = Player.x - transform.position.x;
 				Ydif = Player.y - transform.position.y;
