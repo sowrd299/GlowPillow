@@ -22,7 +22,7 @@ public class PlayerStats : MonoBehaviour {
 	{
 
 		playermanager = GetComponent<PlayerManager>();
-		curHealth = maxHealth[Level];
+        curHealth = maxHealth;//[Level];
 
 	}
 
