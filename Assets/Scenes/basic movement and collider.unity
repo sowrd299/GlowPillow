@@ -455,7 +455,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11478208, guid: a9a511321ff494cbc800576c918c4e2d, type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11455090, guid: a9a511321ff494cbc800576c918c4e2d, type: 2}
       propertyPath: m_Enabled
@@ -664,7 +664,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7448725cd0916c34790c8be1af57f656, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 35d5bb91724c7844f9f96b74b073b6c8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1221,6 +1221,10 @@ Prefab:
     - target: {fileID: 416892, guid: 8e5c16af274ae413c94f511ea5b785b0, type: 2}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086310, guid: 8e5c16af274ae413c94f511ea5b785b0, type: 2}
+      propertyPath: m_AngularDrag
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8e5c16af274ae413c94f511ea5b785b0, type: 2}
