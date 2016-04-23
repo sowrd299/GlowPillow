@@ -5,8 +5,6 @@ public class EnemyMovement : MonoBehaviour {
 
 		private Vector3 Player;
 		private Vector2 Playerdirection;
-		private float Xdif;
-		private float Ydif;
 		private float speed;
 		private int Wall;
 		private int DPlayer;
@@ -31,6 +29,7 @@ public class EnemyMovement : MonoBehaviour {
 		// Used for monster attacking.
 		public float timeBetweenAttacks = 5f;
 		public int attackDamage = 10;
+        public float attackJumpAccel = 3;
 
 		private float TimeSinceAttack = 0f;
 		private float AttackStartRange = 1.0f;
@@ -114,15 +113,19 @@ public class EnemyMovement : MonoBehaviour {
 		}
 
 	private void RushToPlayer() {
-		Xdif = Player.x - (3 * transform.position.x);
-		Ydif = Player.y - (3 * transform.position.y);
+		float Xdif = Player.x - transform.position.x;
+		float Ydif = Player.y - transform.position.y;
+        Xdif *= attackJumpAccel;
+        Ydif *= attackJumpAccel;
 		direction = new Vector2(Xdif, Ydif);
-		}
+	}
 
-	void OnCollisionEnter() {
+	void OnCollisionEnter2D(Collision2D other) {
+        //never actually called by unity...
+        if (other.gameObject.tag != "Player") return;
 		Attacking = false;
 		TimeSinceAttack = 0;
-		playerStats.TakeDamage(attackDamage);
+	    other.gameObject.GetComponent<PlayerStats>().TakeDamage(attackDamage);
 	}
 
 			
@@ -156,8 +159,8 @@ public class EnemyMovement : MonoBehaviour {
 		private void walk_to_player(){
 		if ((distance < detectRange && !stun) || ((distance < AggroRange) && aggro)){
 				// direction points to player if within detectRange
-				Xdif = Player.x - transform.position.x;
-				Ydif = Player.y - transform.position.y;
+				float Xdif = Player.x - transform.position.x;
+				float Ydif = Player.y - transform.position.y;
 				direction = new Vector2(Xdif, Ydif);
 			}
 
@@ -166,11 +169,13 @@ public class EnemyMovement : MonoBehaviour {
 				direction = new Vector2(0, 0);
 			}
 		}
-
+        
+        /*
 		void OnCollisionEnter2D (Collision2D Playerhit){
-			if (Playerhit.gameObject.tag == "player"){
+			if (Playerhit.gameObject.tag == "Player"){
 				stun = true;
 				stuntime = 0.5f;
 			}
 		}
+        */
 	}
