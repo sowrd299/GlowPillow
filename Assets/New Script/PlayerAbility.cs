@@ -65,7 +65,9 @@ public class PlayerAbility : MonoBehaviour {
 		int i = 0;
 		for(i = 0; i < hitColliders.Length; i++){
 			distance = Vector2.Distance(hitColliders[i].transform.position, transform.position);
-			if (distance <= _playerstats.range && Hittime + .5f < Time.time){
+            float angle = Vector2.Angle(direction, hitColliders[i].transform.position - transform.position);
+            Debug.Log("Attack angle is "+angle);
+            if (distance <= _playerstats.range && Hittime + .5f < Time.time && angle < _playerstats.arc/2){
 				{	
 					Hittime = Time.time;
 					hitColliders[i].SendMessage("Enemy Hit", _playerstats.dmg, SendMessageOptions.DontRequireReceiver); 

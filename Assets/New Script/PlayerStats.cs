@@ -27,6 +27,9 @@ public class PlayerStats : MonoBehaviour {
 	public float range { //= 1f;
         get { return statTable["range"][Level]; }
     }
+    public float arc {
+        get { return statTable["arc"][Level]; }
+    }
     public bool invincible = false;
     public bool invisible = false; 
     //private bool damaged = false;

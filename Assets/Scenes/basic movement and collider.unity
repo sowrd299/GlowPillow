@@ -497,6 +497,14 @@ Prefab:
       propertyPath: expVal
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 11413964, guid: a9a511321ff494cbc800576c918c4e2d, type: 2}
+      propertyPath: maxHealth
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 11413964, guid: a9a511321ff494cbc800576c918c4e2d, type: 2}
+      propertyPath: curHealth
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a9a511321ff494cbc800576c918c4e2d, type: 2}
   m_IsPrefabParent: 0
