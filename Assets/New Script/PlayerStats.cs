@@ -64,7 +64,7 @@ public class PlayerStats : MonoBehaviour {
 		Level += 1;
 
 	}
-	public void AdjustCurrentHealth(int adj)
+	public void AdjustCurrentHealth(float adj)
 	{
 		curHealth += adj;
 		if (curHealth < 0)

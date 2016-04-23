@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class star_script : MonoBehaviour {
-    private float speed = 2.0f;
+    public float damage = 5f; //public for unity
+    public float speed = 2.0f; //public for unity
     private Vector3 Player;
     private Vector2 PlayerDirection;
     private Vector2 PlayerPosition;
@@ -59,8 +60,8 @@ public class star_script : MonoBehaviour {
 
         if (other.transform.tag == "Enemy") {
             Debug.Log("hit the Enemy");
-            //deal dmg and return the boomer back to player
-            
+            //deal dmg
+            other.gameObject.GetComponent<MinionsStats>().TakeDamage(damage);
             direct = PlayerDirection;
             //GetComponent<Rigidbody2D>().AddForce(PlayerDirection.normalized * Time.deltaTime);
         }

@@ -3,22 +3,26 @@ using System.Collections;
 
 public class SafeLight : MonoBehaviour {
 
+    //this belongs on the player, if anyone was confused
+
     public PlayerStats _playerStats;
     public PlayerAbility _playerability;
     public PlayerManager _playermanager;
-    public float recovery = 0.5f;
-    bool on;
-    bool off;
-	// Use this for initialization
-	void Start () {
-	    
-	}
+    public float recovery = 0.125f;
+    //bool on;
+    //bool off;
+
+    public float inTime = -1f; //the amount of time the player has been in the zone for
+    //stores -N player is not in the area
 	
-	// Update is called once per frame
 	void Update () {
-	    //check if player object is within the boundary
-       //bool on = _playermanager.on;
-       //bool off = _playermanager.off; 
+        if (inTime >= 0) {
+            inTime += Time.deltaTime;
+            if (inTime >= 2.5) {
+                Debug.Log("The player is recovering!");
+                _playerStats.AdjustCurrentHealth(recovery);
+            }
+        }
 	}
 
 
@@ -30,7 +34,9 @@ public class SafeLight : MonoBehaviour {
           
             _playerStats.invincible = true;
             _playerStats.invisible = true;
-            
+
+            inTime = 0f;
+
             //make player invisible to enemy
             //enemy can not enter the light 
         }
@@ -43,11 +49,12 @@ public class SafeLight : MonoBehaviour {
             Debug.Log("exist light");
             _playerStats.invincible = false;
             _playerStats.invisible = false;
-            
+
+            inTime = -1f;
         }
     }
 
-
+    /*
     void OnTriggerStay2D(Collider2D Stay)
     {
         Debug.Log("Inside Light");
@@ -64,10 +71,7 @@ public class SafeLight : MonoBehaviour {
                 _playerStats.curHealth = _playerStats.maxHealth;
             }    
         }
-
     }
-
-    
-
+    */
 
 }
