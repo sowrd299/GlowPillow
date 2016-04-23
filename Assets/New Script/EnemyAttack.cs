@@ -52,7 +52,7 @@ public class EnemyAttack : MonoBehaviour {
 		timer = 0f; 
 
 
-		if(playerStats.curHealth > 0)
+		if(playerStats.getCurHealth() > 0)
 		{
 			playerStats.TakeDamage(attackDamage);
 		}

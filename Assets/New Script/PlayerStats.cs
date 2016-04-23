@@ -1,69 +1,65 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
+using System;
 
 public class PlayerStats : MonoBehaviour {
 
-    //public Exp exp;
+    //public for unity
+    public Exp exp;
+    public string statUrl = "Assets/SoftCode/PlayerStats.csv";
 
-    //readonly public float[] maxHealth = new float[10] { 50f };
-    public float maxHealth = 50f;
-	public float curHealth;
+    private Dictionary<string, float[]> statTable;
+
+    public float maxHealth {//= 50f;
+        get { return statTable["maxHealth"][Level]; }
+    }
+	private float curHealth;
+    public float blankyResist {
+        get { return statTable["blankyResist"][Level];  }
+    }
 	public float Speed = 3f;
-    public int Level = 0;
-	public float dmg = 10f;
-	public float range = 1f;
+    public int Level {//=0;
+        get { return exp.Level; }
+    }
+	public float dmg { //=10f;
+        get { return statTable["damage"][Level]; }
+    }
+	public float range { //= 1f;
+        get { return statTable["range"][Level]; }
+    }
     public bool invincible = false;
     public bool invisible = false; 
     //private bool damaged = false;
 	private bool isDead = false;
-	private float nextLevelUp = 20;
-	private float currentXP = 0;
+	//private float nextLevelUp = 20;
+	//private float currentXP = 0;
 	PlayerManager playermanager;
 	private bool blankie_on = false;
 
-	// Use this for initialization
-	void Awake()
-	{
-
-		playermanager = GetComponent<PlayerManager>();
-        curHealth = maxHealth;//[Level];
-
+    // Use this for initialization
+    void Awake() {
+        statTable = StatsReader.ReadStats(statUrl);
+        playermanager = GetComponent<PlayerManager>();
+        exp.ExpPerLevel = Array.ConvertAll(statTable["exp"],new Converter<float,int>( x => (int)x ));
+        Debug.Log(maxHealth);
+        Debug.Log(dmg);
+        Debug.Log(range);
+        Debug.Log(blankyResist);
+        curHealth = maxHealth;
 	}
 
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
 	void Update () {
-
-        /*
-        manage the blanky
-        */
-
-        blankie_on = playermanager.on; //
+        //manage the blanky
+        blankie_on = playermanager.on;
 
 		AdjustCurrentHealth(0);
 	}
 
 	public void gainExperience(int amount)
 	{
-		currentXP += amount;
-		if (currentXP >= nextLevelUp)
-		{
-			currentXP = 0;
-			Debug.Log("Gain level");
-			levelUp();
-		}
+        exp += amount;
+    }
 
-	}
-
-	void levelUp()
-	{
-		nextLevelUp += 20;
-		maxHealth += 50;
-		Level += 1;
-
-	}
 	public void AdjustCurrentHealth(float adj)
 	{
 		curHealth += adj;
@@ -71,21 +67,19 @@ public class PlayerStats : MonoBehaviour {
 			curHealth = 0;
 		if(curHealth > maxHealth)
 			curHealth = maxHealth;
-		if(maxHealth < 1)
-			maxHealth = 1;
 	}
 
 	public void TakeDamage(float amount)
 	{
 
-        if (blankie_on == true)
+        if (blankie_on)
         {
             //damaged = true;
-            curHealth -= (amount * .40f);
+            curHealth -= (amount * blankyResist);
             Debug.Log(curHealth);
         }
         //in light zone
-        else if (invincible == true)
+        else if (invincible)
         {
             //simply does not affect any of the health status
             curHealth -= 0; //probably not needed
@@ -94,7 +88,7 @@ public class PlayerStats : MonoBehaviour {
 
         else
         {
-            if (invincible == false) { 
+            if (!invincible) { 
                 //damaged = true;
                 curHealth -= amount;
                 Debug.Log(curHealth);

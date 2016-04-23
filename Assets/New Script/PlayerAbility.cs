@@ -70,7 +70,7 @@ public class PlayerAbility : MonoBehaviour {
 					Hittime = Time.time;
 					hitColliders[i].SendMessage("Enemy Hit", _playerstats.dmg, SendMessageOptions.DontRequireReceiver); 
 					Debug.Log("Damage Sent");
-					hitColliders[i].gameObject.GetComponent<MinionsStats>().TakeDamage(_playerstats.dmg);
+					hitColliders[i].gameObject.GetComponent<MinionsStats>().TakeDamage(_playerstats.dmg,_playerstats.exp);
 
 					float verticalpush = hitColliders[i].gameObject.transform.position.y - transform.position.y;
 					float horizontalpush = hitColliders[i].gameObject.transform.position.x - transform.position.x;

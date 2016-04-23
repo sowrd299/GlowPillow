@@ -48,7 +48,7 @@ public class HitTime : MonoBehaviour {
 				Hittime = Time.time;
 				//Takes hp out... something like that
 				playerStats.TakeDamage(enemyAttack.attackDamage); //this is actually affecting the Health variable in HeroStat
-				Debug.Log (playerStats.curHealth);
+				Debug.Log (playerStats.getCurHealth());
 				//This part gets the amount of transform (position)
 				float verticalpush = Enemyhit.gameObject.transform.position.y - transform.position.y;
 				float horizontalpush = Enemyhit.gameObject.transform.position.x - transform.position.x;

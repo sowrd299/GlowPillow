@@ -12,11 +12,11 @@ public class MinionsStats : MonoBehaviour {
 	public float Speed = 7;
 	public float DetectionRange = 4;
 	public float DeAggroRange = 5;
+    public int expVal; //do not access
 	public float TranslatingDistance;
 	public ArrayList Abilities; // <-- for dodges or run over water etc
 	private bool damaged = false;
 	private bool isDead = false;
-	PlayerStats playerstats;
 
 	// Use this for initialization
 	void Awake() {
@@ -40,8 +40,10 @@ public class MinionsStats : MonoBehaviour {
 			maxHealth = 1;
 	}
 
-	public void TakeDamage(float amount)
+    public void TakeDamage(float amount, Exp exp = null)
 	{
+        /* Returns true if the monster was killed with this attack
+         */
 		if (isDead)
 			return;
 		damaged = true;
@@ -52,15 +54,14 @@ public class MinionsStats : MonoBehaviour {
 		{
 			Debug.Log("Enemy Destroyed!!!");
 			Death();
+            if(exp != null) exp += expVal;
 		}
-
 	}
 
 	public void Death()
 	{
 		isDead = true;
-		//playerstats.gainExperience(20);
-		Destroy(this.gameObject, 1);
+		Destroy(gameObject, 1);
 		//destroy game object
 		//anim.SetTrigger("Die");
 		//display death animation and stop all action (movement, ability)

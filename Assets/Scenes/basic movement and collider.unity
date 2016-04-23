@@ -130,7 +130,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
 --- !u!4 &238890281 stripped
 Transform:
   m_PrefabParentObject: {fileID: 433940, guid: a9a511321ff494cbc800576c918c4e2d, type: 2}
@@ -253,6 +253,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5192f4741cb206c499a9919b6b259920, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &300749245 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11493798, guid: 8e5c16af274ae413c94f511ea5b785b0,
+    type: 2}
+  m_PrefabInternal: {fileID: 1853047185}
+  m_Script: {fileID: 11500000, guid: 5192f4741cb206c499a9919b6b259920, type: 3}
 --- !u!1 &302505742
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,6 +271,7 @@ GameObject:
   - 23: {fileID: 302505747}
   - 33: {fileID: 302505746}
   - 114: {fileID: 302505744}
+  - 114: {fileID: 302505748}
   m_Layer: 0
   m_Name: SafeLight
   m_TagString: SafeZone
@@ -281,8 +288,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.54, y: -2.23, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1850096711}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
 --- !u!114 &302505744
@@ -348,6 +354,19 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!114 &302505748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 302505742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad35066c8571ffb4bbca11ff234c5dfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Layer: 12
+  Trigger: 0
 --- !u!1 &315496696
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,6 +493,10 @@ Prefab:
       propertyPath: timeBetweenAttacks
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 11413964, guid: a9a511321ff494cbc800576c918c4e2d, type: 2}
+      propertyPath: expVal
+      value: 200
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a9a511321ff494cbc800576c918c4e2d, type: 2}
   m_IsPrefabParent: 0
@@ -525,7 +548,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 5
 --- !u!114 &581959240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1176,53 +1199,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
---- !u!1 &1850096710
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1850096711}
-  - 60: {fileID: 1850096712}
-  m_Layer: 12
-  m_Name: Collider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1850096711
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1850096710}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 302505743}
-  m_RootOrder: 0
---- !u!60 &1850096712
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1850096710}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  m_Points:
-    m_Paths:
-    - - {x: 0, y: 1}
-      - {x: 0.95105654, y: 0.30901697}
-      - {x: 0.5877852, y: -0.80901706}
-      - {x: -0.58778536, y: -0.80901694}
-      - {x: -0.9510565, y: 0.30901712}
 --- !u!1001 &1853047185
 Prefab:
   m_ObjectHideFlags: 0
@@ -1290,6 +1266,14 @@ Prefab:
       propertyPath: m_AngularDrag
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11486058, guid: 8e5c16af274ae413c94f511ea5b785b0, type: 2}
+      propertyPath: statUrl
+      value: Assets/SoftCode/PlayerStats.csv
+      objectReference: {fileID: 0}
+    - target: {fileID: 11486058, guid: 8e5c16af274ae413c94f511ea5b785b0, type: 2}
+      propertyPath: exp
+      value: 
+      objectReference: {fileID: 300749245}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8e5c16af274ae413c94f511ea5b785b0, type: 2}
   m_IsPrefabParent: 0
