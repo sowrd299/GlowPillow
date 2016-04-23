@@ -6,6 +6,7 @@ public class SafeLight : MonoBehaviour {
     public PlayerStats _playerStats;
     public PlayerAbility _playerability;
     public PlayerManager _playermanager;
+    public float recovery = 0.5f;
     bool on;
     bool off;
 	// Use this for initialization
@@ -26,7 +27,7 @@ public class SafeLight : MonoBehaviour {
         if (Entering.transform.tag == "SafeZone") //turning the player invincibility on
         {
             Debug.Log("entering light");
-
+          
             _playerStats.invincible = true;
             _playerStats.invisible = true;
             
@@ -54,7 +55,10 @@ public class SafeLight : MonoBehaviour {
         _playerStats.invisible = true;
         if (_playerStats.curHealth < _playerStats.maxHealth)
         {
-            _playerStats.curHealth += 5f;
+            Debug.Log(_playerStats.curHealth);
+
+            _playerStats.curHealth += recovery;
+
             if (_playerStats.curHealth >= _playerStats.maxHealth)
             {
                 _playerStats.curHealth = _playerStats.maxHealth;
