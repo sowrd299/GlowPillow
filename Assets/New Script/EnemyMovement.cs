@@ -13,6 +13,7 @@ public class EnemyMovement : MonoBehaviour {
 		private float distance;
 		private bool stun;
 		private float stuntime;
+        private PlayerStats playerStats;
 
 		private float detectRange {
         get {

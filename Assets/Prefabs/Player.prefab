@@ -112,6 +112,8 @@ GameObject:
   - 114: {fileID: 11471700}
   - 114: {fileID: 11486058}
   - 114: {fileID: 11495366}
+  - 114: {fileID: 11493798}
+  - 114: {fileID: 11446958}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -151,7 +153,7 @@ Transform:
   m_GameObject: {fileID: 189058}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 28, y: 28, z: 28}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 412754}
   m_Father: {fileID: 482466}
@@ -164,7 +166,7 @@ Transform:
   m_GameObject: {fileID: 100034}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 28, y: 28, z: 28}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 457140}
   m_Father: {fileID: 482466}
@@ -297,6 +299,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 0.6
   sprite: {fileID: 155658}
+--- !u!114 &11446958
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 193640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a04576d9923363a449c55e045a620f00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerStats: {fileID: 11486058}
+  _playerability: {fileID: 11495366}
+  _playermanager: {fileID: 11471700}
 --- !u!114 &11471700
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -347,6 +363,19 @@ MonoBehaviour:
   Level: 0
   dmg: 5
   range: 0.5
+  invincible: 0
+  invisible: 0
+--- !u!114 &11493798
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 193640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5192f4741cb206c499a9919b6b259920, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11495366
 MonoBehaviour:
   m_ObjectHideFlags: 1
