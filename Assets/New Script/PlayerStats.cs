@@ -11,12 +11,15 @@ public class PlayerStats : MonoBehaviour {
     public int Level = 0;
 	public float dmg = 10f;
 	public float range = 1f;
-	//private bool damaged = false;
+    public bool invincible = false;
+    public bool invisible = false; 
+    //private bool damaged = false;
 	private bool isDead = false;
 	private float nextLevelUp = 20;
 	private float currentXP = 0;
 	PlayerManager playermanager;
 	private bool blankie_on = false;
+
 	// Use this for initialization
 	void Awake()
 	{
@@ -75,19 +78,28 @@ public class PlayerStats : MonoBehaviour {
 	public void TakeDamage(float amount)
 	{
 
-		if (blankie_on == true)
-		{
-			//damaged = true;
-			curHealth -= (amount * .40f);
-			Debug.Log(curHealth);
-		}
+        if (blankie_on == true)
+        {
+            //damaged = true;
+            curHealth -= (amount * .40f);
+            Debug.Log(curHealth);
+        }
+        //in light zone
+        else if (invincible == true)
+        {
+            //simply does not affect any of the health status
+            curHealth -= 0; //probably not needed
+            Debug.Log(curHealth);
+        }
 
-		else
-		{
-			//damaged = true;
-			curHealth -= amount;
-			Debug.Log(curHealth);
-		}
+        else
+        {
+            if (invincible == false) { 
+                //damaged = true;
+                curHealth -= amount;
+                Debug.Log(curHealth);
+            }
+        }
 
 		if(curHealth <= 0 && !isDead)
 		{

@@ -12,7 +12,7 @@ public class EnemyMovement : MonoBehaviour {
 		private int DPlayer;
 		private float distance;
 		private bool stun;
-		private float stuntime; 
+		private float stuntime;
 
 		private float detectRange {
         get {
@@ -32,7 +32,7 @@ public class EnemyMovement : MonoBehaviour {
 		public int attackDamage = 10;
 
 		private float TimeSinceAttack = 0f;
-		private float AttackStartRange = 1.f;
+		private float AttackStartRange = 1.0f;
 
 		private bool Attacking = false;
 
@@ -107,7 +107,7 @@ public class EnemyMovement : MonoBehaviour {
 			}
 		else {
 			Attacking = false;
-			TimeSinceAttack += TimeSinceAttack.deltaTime;
+			TimeSinceAttack += Time.deltaTime;
 			}
 			
 		}

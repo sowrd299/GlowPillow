@@ -8,8 +8,7 @@ public class star_script : MonoBehaviour {
     private Vector2 PlayerPosition;
     private Vector2 direct;
     private float distance;
-    private float Xdif;
-    private float Ydif;
+   
 	//public PlayerAbility _playerability;
 
     /// <summary>

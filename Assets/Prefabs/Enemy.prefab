@@ -108,6 +108,7 @@ MonoBehaviour:
   curHealth: 50
   Speed: 4
   DetectionRange: 7
+  DeAggroRange: 5
   TranslatingDistance: 7
 --- !u!114 &11427248
 MonoBehaviour:
@@ -120,6 +121,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3c5070067f55e438a4fee8363cd5a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeBetweenAttacks: 5
+  attackDamage: 10
+  aggro: 1
   movementSpeed: 0.5
   enemy: {fileID: 147608}
 --- !u!114 &11455090

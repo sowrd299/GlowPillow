@@ -7,10 +7,10 @@ using System.Collections.Generic;
 public class PlayerManager : MonoBehaviour {
 
 	public string facedirection;
-	private Vector2 player_position;
+	
 	//Rigidbody2D rbody;
 	public Animator anim;
-	private Vector2 face_direction;
+	
 	private float speed;
 	public PlayerAbility _playerability;
 	public PlayerStats _playerstats;
@@ -148,7 +148,7 @@ public class PlayerManager : MonoBehaviour {
 			anim.SetBool("down", false);
 			//anim.SetBool("WalkRight", true);
 			transform.Translate(Vector2.right * speed);
-			//face_direction = new Vector2(1,0);
+			
 			facedirection = "right";
 			anim.SetBool("WalkRight", true);
 		}
@@ -166,7 +166,7 @@ public class PlayerManager : MonoBehaviour {
 			anim.SetBool("down", false);
 			//anim.SetBool("WalkLeft", true);
 			transform.Translate(-Vector2.right * speed);
-			//face_direction = new Vector2(-1,0);
+			
 			facedirection = "left";
 			anim.SetBool("WalkLeft", true);
 		}
@@ -185,7 +185,7 @@ public class PlayerManager : MonoBehaviour {
 			anim.SetBool("down", false);
 			// anim.SetBool("WalkUp", true);
 			transform.Translate(Vector2.up * speed);
-			//face_direction = new Vector2(0,1);
+			
 			facedirection = "up";
 			anim.SetBool("WalkUp", true);
 		}
@@ -203,7 +203,7 @@ public class PlayerManager : MonoBehaviour {
 			anim.SetBool("up", false);
 			//anim.SetBool("WalkDown", true);
 			transform.Translate(-Vector2.up * speed);
-			//face_direction = new Vector2(0,-1);
+			
 			facedirection = "down";
 			anim.SetBool("WalkDown", true);
 			}

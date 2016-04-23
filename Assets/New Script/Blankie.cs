@@ -3,12 +3,12 @@ using System.Collections;
 
 public class Blankie : MonoBehaviour {
 	private float Hittime;
-	private Vector2 facedirection;
+	//private Vector2 facedirection;
 	//private float dmg;
 	//private float health;
 	public GameObject enemy;
 	public EnemyAttack enemyAttack;
-	private float damage;
+	//private float damage;
 	//PlayerStats playerStats;
 	/// <summary>
 	/// Blankie has a missing art issue. The collider should be the same size as the player object at all time
